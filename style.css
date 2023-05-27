@@ -1,0 +1,10 @@
+.control-point {
+    width: 10px;
+    height: 10px;
+    background-color: red;
+    border-radius: 50%;
+    position: absolute;
+    cursor: pointer;
+    user-select: none;
+    touch-action: none;
+}
