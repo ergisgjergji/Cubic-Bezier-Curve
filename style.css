@@ -1,3 +1,7 @@
+:root {
+    --point-size: 15;
+}
+
 body {
     margin: 0px;
     padding: 0px;
@@ -12,8 +16,8 @@ body {
 
 .control-point {
     position: fixed;
-    width: 10px;
-    height: 10px;
+    width: calc(var(--point-size) * 1px);
+    height: calc(var(--point-size) * 1px);
     background-color: red;
     border-radius: 50%;
     cursor: pointer;

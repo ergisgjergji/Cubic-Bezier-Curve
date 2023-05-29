@@ -2,7 +2,7 @@ const svg = document.getElementById("svg");
 const svgNS = "http://www.w3.org/2000/svg";
 
 // Size of point in pixels
-const pointSize = 10;
+const pointSize = getComputedStyle(document.documentElement).getPropertyValue('--point-size');
 const pointRadius = pointSize / 2;
 const controlPoints = [
     { x: 50, y: 200 },
@@ -26,14 +26,15 @@ controlPoints.forEach((point, pointIndex) => {
 
 const drag = (pointElem, pointIndex) => {
     const movePoint_Desktop = (e) => {
-        let x = e.clientX - pointRadius;
-        let y = e.clientY - pointRadius;
+        let x = e.clientX;
+        let y = e.clientY;
 
         pointElem.style.left = x + "px";
         pointElem.style.top = y + "px";
 
-        controlPoints[pointIndex].x = x;
-        controlPoints[pointIndex].y = y;
+        // Interpolate to the center of the point, thus add pointRadius in calculation
+        controlPoints[pointIndex].x = x + pointRadius;
+        controlPoints[pointIndex].y = y + pointRadius;
 
         svg.querySelectorAll("path").forEach(p => p.remove())
         drawCubicBezierCurve(controlPoints);
@@ -41,14 +42,15 @@ const drag = (pointElem, pointIndex) => {
 
     const movePoint_Mobile = (e) => {
         let touch = e.touches[0]
-        let x = touch.clientX - pointRadius;
-        let y = touch.clientY - pointRadius;
+        let x = touch.clientX;
+        let y = touch.clientY;
 
         pointElem.style.left = x + "px";
         pointElem.style.top = y + "px";
 
-        controlPoints[pointIndex].x = x;
-        controlPoints[pointIndex].y = y;
+        // Interpolate to the center of the point, thus add pointRadius in calculation
+        controlPoints[pointIndex].x = x + pointRadius;
+        controlPoints[pointIndex].y = y + pointRadius;
 
         svg.querySelectorAll("path").forEach(p => p.remove())
         drawCubicBezierCurve(controlPoints);
