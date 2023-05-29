@@ -1,10 +1,20 @@
+body {
+    margin: 0px;
+    padding: 0px;
+    overflow: hidden;
+}
+
+#svg {
+    width: 100vw;
+    height: calc(100vh - env(safe-area-inset-bottom));
+    background-color: #f0f0f0;
+}
+
 .control-point {
+    position: fixed;
     width: 10px;
     height: 10px;
     background-color: red;
     border-radius: 50%;
-    position: absolute;
     cursor: pointer;
-    user-select: none;
-    touch-action: none;
 }
