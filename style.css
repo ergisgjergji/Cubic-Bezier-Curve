@@ -22,3 +22,8 @@ body {
     border-radius: 50%;
     cursor: pointer;
 }
+
+.control-point:first-of-type,
+.control-point:last-of-type {
+    background-color: #000;
+}
